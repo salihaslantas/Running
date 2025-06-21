@@ -27,15 +27,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/kilometer" />
 
-    <Button
-        android:id="@+id/lap"
-        android:layout_width="match_parent"
+
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
         android:layout_marginTop="45dp"
-        android:text="Lap"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Calories" />
+        app:layout_constraintTop_toBottomOf="@+id/Calories">
+
+        <Button
+            android:id="@+id/lap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:layout_marginTop="45dp"
+            android:text="Lap" />
+
+        <Button
+            android:id="@+id/halfLap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:layout_marginTop="45dp"
+            android:text="Half Lap" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -23,6 +23,7 @@ class RunningActivity : AppCompatActivity() {
         }
         val circularTrack = intent.getBooleanExtra("CircularTrack", false)
         val meter = intent.getDoubleExtra("meter",0.0)
+        val kg = intent.getDoubleExtra("kg", 70.0)
         var distance = 0.0
         binding.lap.setOnClickListener {
             distance += if (circularTrack) {
@@ -31,7 +32,16 @@ class RunningActivity : AppCompatActivity() {
                 meter
             }
             binding.kilometer.text = "Kilometer: " + (distance / 1000).toString()
-            binding.Calories.text = "Calories: " + calculateCalories((distance / 1000), 70.0).toString()
+            binding.Calories.text = "Calories: " + calculateCalories((distance / 1000), kg).toString()
+        }
+        binding.halfLap.setOnClickListener {
+            distance += if (circularTrack) {
+                meter
+            } else {
+                meter / 2
+            }
+            binding.kilometer.text = "Kilometer: " + (distance / 1000).toString()
+            binding.Calories.text = "Calories: " + calculateCalories((distance / 1000), kg).toString()
         }
     }
     fun calculateCalories(distance: Double, weight: Double, pace: String = "moderate"): Int {

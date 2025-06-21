@@ -22,12 +22,14 @@ class MainActivity : AppCompatActivity() {
             insets
         }
         binding.submit.setOnClickListener {
-            val CircularTrack = binding.circularTrack.isActivated
+            val CircularTrack = binding.circularTrack.isChecked
             val meter = binding.meterEditText.text.toString().toDouble()
+            val kg = binding.kgEditText.text.toString().toDoubleOrNull() ?: 70.0
             if (meter != 0.0) {
                 val intent = Intent(this@MainActivity, RunningActivity::class.java)
                 intent.putExtra("CircularTrack",CircularTrack)
                 intent.putExtra("meter", meter)
+                intent.putExtra("kg", kg)
                 startActivity(intent)
             }
         }
