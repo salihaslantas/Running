@@ -22,26 +22,26 @@ class RunningActivity : AppCompatActivity() {
             insets
         }
         val circularTrack = intent.getBooleanExtra("CircularTrack", false)
-        val meter = intent.getDoubleExtra("meter",0.0)
+        val km = intent.getDoubleExtra("meter",0.0) / 1000.0
         val kg = intent.getDoubleExtra("kg", 70.0)
         var distance = 0.0
         binding.lap.setOnClickListener {
             distance += if (circularTrack) {
-                meter * 2
+                km * 2
             } else {
-                meter
+                km
             }
-            binding.kilometer.text = "Kilometer: " + (distance / 1000).toString()
-            binding.Calories.text = "Calories: " + calculateCalories((distance / 1000), kg).toString()
+            binding.kilometer.text = "Kilometer: " + String.format("%.3f",distance)
+            binding.Calories.text = "Calories: " + calculateCalories(distance, kg).toString()
         }
         binding.halfLap.setOnClickListener {
             distance += if (circularTrack) {
-                meter
+                km
             } else {
-                meter / 2
+                km / 2
             }
-            binding.kilometer.text = "Kilometer: " + (distance / 1000).toString()
-            binding.Calories.text = "Calories: " + calculateCalories((distance / 1000), kg).toString()
+            binding.kilometer.text = "Kilometer: " + String.format("%.3f",distance)
+            binding.Calories.text = "Calories: " + calculateCalories(distance, kg).toString()
         }
     }
     fun calculateCalories(distance: Double, weight: Double, pace: String = "moderate"): Int {
